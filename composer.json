@@ -1,0 +1,28 @@
+{
+  "name": "samman/yii2-solr",
+  "description": "Yii2 SOLR (Search Engine) Extension",
+  "type": "yii2-extension",
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Samman\\solr\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Samman",
+      "email": "mazenalsmman@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-httpclient": "*",
+    "yidas/yii2-composer-bower-skip": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
+}
