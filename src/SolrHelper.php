@@ -31,7 +31,7 @@ class SolrHelper
      * @return SolrQuery
      * @throws \Exception
      */
-    public function query($collectionName = ''): SolrQuery
+    public function find(string $collectionName = ''): SolrQuery
     {
         if (!empty($collectionName)) $this->collection = $collectionName;
         return new SolrQuery($this);
@@ -118,7 +118,7 @@ class SolrHelper
      * @throws Exception
      * @throws InvalidConfigException
      */
-    public function indexByQuery($dataBaseQuery, $batchSize = 100): void
+    public function indexByQuery(Query $dataBaseQuery, int $batchSize = 100): void
     {
         $batchesCount = 0;
         $modelsCount = $dataBaseQuery->count();

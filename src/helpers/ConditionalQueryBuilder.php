@@ -104,7 +104,8 @@ class ConditionalQueryBuilder
     private function buildNotCondition(): array
     {
         [$attribute, $value] = $this->condition;
-        return [$attribute, $value];
+        $value = preg_replace('/%/', '', $value);
+        return [[$attribute, $value, $this->operand, self::TYPE_NOT => true]];
     }
 
     /**
@@ -114,6 +115,6 @@ class ConditionalQueryBuilder
     {
         [$attribute, $value] = $this->condition;
         $value = preg_replace('/%/', '', $value);
-        return [[$attribute, $value]];
+        return [[$attribute, $value, $this->operand]];
     }
 }

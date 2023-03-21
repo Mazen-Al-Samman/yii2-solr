@@ -10,6 +10,7 @@ use yii\httpclient\Client;
 use yii\base\InvalidConfigException;
 use Samman\solr\helpers\SolrResponse;
 use Samman\solr\traits\SolrQueryTrait;
+use Samman\solr\helpers\ConditionalQueryBuilder;
 
 class SolrQuery implements QueryInterface
 {
@@ -129,13 +130,14 @@ class SolrQuery implements QueryInterface
         $formattedAttributes = '';
         foreach ($this->fq as $item) {
             [$attribute, $value, $operand] = $item;
+            $conditionSign = empty($item[ConditionalQueryBuilder::TYPE_NOT]) ? '' : '!';
 
             if (empty($formattedAttributes)) {
-                $formattedAttributes = "$attribute:$value";
+                $formattedAttributes = "$conditionSign$attribute:$value";
                 continue;
             }
 
-            $keyValuePair = "$operand $attribute:$value";
+            $keyValuePair = "$operand $conditionSign$attribute:$value";
             $formattedAttributes = "($formattedAttributes $keyValuePair)";
         }
         return $formattedAttributes;
