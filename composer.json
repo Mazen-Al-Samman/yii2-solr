@@ -24,5 +24,6 @@
     "allow-plugins": {
       "yiisoft/yii2-composer": true
     }
-  }
+  },
+  "license": "MIT"
 }
